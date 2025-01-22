@@ -1,29 +1,32 @@
 {
-    "registrationList": [
-      {
-        "id": "1",
-        "name": "Nelly",
-        "status": false
-      },
-      {
-        "id": "2",
-        "name": "Theodore",
-        "status": true
-      },
-      {
-        "id": "3",
-        "name": "Noella",
-        "status": true
-      },
-      {
-        "id": "4",
-        "name": "Roberto",
-        "status": false
-      },
-      {
-        "id": "5",
-        "name": "Nicole",
-        "status": false
-      }
-    ]
-  }
+  "names": [
+    {
+      "id": 0,
+      "text": "Nadia"
+    },
+    {
+      "id": 1,
+      "text": " Nelly"
+    },
+    {
+      "id": 2,
+      "text": "Noella"
+    },
+    {
+      "text": "theodore",
+      "id": 3
+    },
+    {
+      "text": "nelly",
+      "id": 4
+    },
+    {
+      "text": "jnkl",
+      "id": 5
+    },
+    {
+      "text": "mn,",
+      "id": 6
+    }
+  ]
+}
