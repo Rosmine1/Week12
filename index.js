@@ -3,31 +3,19 @@ $(document).ready(function () {
     //create Base URL variable
     const BASE_URL = "http://localhost:4000";
   
-    /**API Request Functions */
+    
   
     //get all names from DB
     const fetchNames = async () => {
-      //fetch data from the server using the fetch API
       const response = await fetch(`${BASE_URL}/names`);
-  
-      //convert the response to JSON
       const data = await response.json();
-      // console.log({ data });
-  
-      //return the data
       return data;
     };
   
     //get a names by its ID
-    const fetchName = async (id) => {
-      //fetch data from the server using the fetch API
+    const fetchName = async (id) => { 
       const response = await fetch(`${BASE_URL}/names/${id}`);
-  
-      //convert the response to JSON
       const data = await response.json();
-      // console.log({ data });
-  
-      //return the data
       return data;
     };
   
@@ -37,7 +25,6 @@ $(document).ready(function () {
         "text": text
       }
       
-      //fetch data from the server using the fetch API
       const response = await fetch(`${BASE_URL}/names`, {
         method: "POST",
         headers: {
@@ -45,24 +32,14 @@ $(document).ready(function () {
         },
         body: JSON.stringify(newItem),
       });
-  
-      //convert the response to JSON
       const data = await response.json();
-      // console.log({ data });
-  
-      //return the data
       return data;
     };
   
-    /**Other functions to handle CRUD requests */
-  
-    //create render function to retrieve data from the server and render it to the page
+    
+    //function to retrieve data from the server and render it to the page
     const render = async () => {
-      //fetch all todos from the server
       const names = await fetchNames();
-      // console.log("todos from render", { todos });
-  
-      // Clear the current list
       $("#todoList").empty();
   
       // Loop through the names array and append each todo to the list
@@ -86,10 +63,8 @@ $(document).ready(function () {
     //add event listener to the add name button
     $("#addTodo").click(async (event) => {
       event.preventDefault();
-      //get the value of the input field
       const text = $("#newTodo").val();
-      // console.log({ text });
-  
+    
       if (!text) {
         alert("Please enter a name");
         return;
@@ -105,22 +80,19 @@ $(document).ready(function () {
         $("#newTodo").val("");
       }
   
-      //re-render the names by calling the render function
+      //re-render the names again
       render();
     });
   
     //add event listener to the delete button
     $(document).on("click", ".deleteTodo", async function () {
-      // Get the id of the todo to be deleted
       const id = $(this).data("index");
       console.log("deleting", { id });
-  
-      // Delete the names from the server
       await fetch(`${BASE_URL}/names/${id}`, {
         method: "DELETE",
       });
   
-      // Re-render the names by calling the render function
+      // Re-render the names again 
       render();
     });
   
