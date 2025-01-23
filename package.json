@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "json-server db/db.json --port 4000"
+    "server": "json-server db/db.json --port 4000"
   },
   "author": "",
   "license": "ISC",
@@ -14,5 +14,6 @@
     "json": "^11.0.0",
     "server": "^1.0.41"
   },
+  "devDependencies": {},
   "description": ""
 }

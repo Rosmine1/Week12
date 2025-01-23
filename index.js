@@ -5,7 +5,7 @@ $(document).ready(function () {
   
     /**API Request Functions */
   
-    //get all todos from DB
+    //get all names from DB
     const fetchNames = async () => {
       //fetch data from the server using the fetch API
       const response = await fetch(`${BASE_URL}/names`);
@@ -18,7 +18,7 @@ $(document).ready(function () {
       return data;
     };
   
-    //get a todo by its ID
+    //get a names by its ID
     const fetchName = async (id) => {
       //fetch data from the server using the fetch API
       const response = await fetch(`${BASE_URL}/names/${id}`);
@@ -31,12 +31,12 @@ $(document).ready(function () {
       return data;
     };
   
-    //add a new todo to the server
+    //add a new name to the server
     const addName = async (text) => {
       let newItem = {
         "text": text
       }
-      console.log(JSON.stringify(newItem))
+      
       //fetch data from the server using the fetch API
       const response = await fetch(`${BASE_URL}/names`, {
         method: "POST",
@@ -63,9 +63,9 @@ $(document).ready(function () {
       // console.log("todos from render", { todos });
   
       // Clear the current list
-      //$("#todoList").empty();
+      $("#todoList").empty();
   
-      // Loop through the todos array and append each todo to the list
+      // Loop through the names array and append each todo to the list
       names.forEach(function (name, index) {
         let nameItem = `<li class="list-group-item d-flex justify-content-between align-items-center">
                                     <span class="todo-text ${
@@ -83,7 +83,7 @@ $(document).ready(function () {
     // Call the render function when the page loads
     render();
   
-    //add event listener to the add todo button
+    //add event listener to the add name button
     $("#addTodo").click(async (event) => {
       event.preventDefault();
       //get the value of the input field
@@ -95,7 +95,7 @@ $(document).ready(function () {
         return;
       }
   
-      //add the todo to the server
+      //add the names  to the server
       try {
         await addName(text);
       } catch (error) {
@@ -105,23 +105,22 @@ $(document).ready(function () {
         $("#newTodo").val("");
       }
   
-      //re-render the todos by calling the render function
+      //re-render the names by calling the render function
       render();
     });
   
     //add event listener to the delete button
-    //Need to use event delegation since the delete button is dynamically created
     $(document).on("click", ".deleteTodo", async function () {
       // Get the id of the todo to be deleted
       const id = $(this).data("index");
       console.log("deleting", { id });
   
-      // Delete the todo from the server
+      // Delete the names from the server
       await fetch(`${BASE_URL}/names/${id}`, {
         method: "DELETE",
       });
   
-      // Re-render the todos by calling the render function
+      // Re-render the names by calling the render function
       render();
     });
   
